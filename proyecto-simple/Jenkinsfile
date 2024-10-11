@@ -1,24 +1,29 @@
 pipeline {
     agent any
+    
     stages {
-        stage('Obtener código fuente') {
+        stage('Checkout') {
             steps {
-                git 'https://github.com/claudiaPenaR/proyecto-simple.git'
+                // Clonar el código fuente de GitHub
+                git branch: 'main', url: 'https://github.com/claudiaPenaR/proyecto-simple.git'
             }
         }
-        stage('Compilar con Maven') {
+        stage('Build') {
             steps {
+                // Ejecutar el build usando Maven
                 sh 'mvn clean install'
             }
         }
-        stage('Análisis de código') {
+        stage('Test') {
             steps {
-                sh 'mvn sonar:sonar'
+                // Ejecutar pruebas con Maven
+                sh 'mvn test'
             }
         }
-        stage('Deployment') {
+        stage('Deploy') {
             steps {
-                echo 'Deployment finalizado'
+                // Aquí iría la lógica de despliegue, puede variar según el entorno
+                echo 'Realizando el despliegue...'
             }
         }
     }
