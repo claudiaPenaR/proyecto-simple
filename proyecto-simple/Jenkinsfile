@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    stages {
+        stage('Obtener código fuente') {
+            steps {
+                git 'https://github.com/TuNombreDeUsuario/proyecto-simple.git'
+            }
+        }
+        stage('Compilar con Maven') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        stage('Análisis de código') {
+            steps {
+                sh 'mvn sonar:sonar'
+            }
+        }
+        stage('Deployment') {
+            steps {
+                echo 'Deployment finalizado'
+            }
+        }
+    }
+}
