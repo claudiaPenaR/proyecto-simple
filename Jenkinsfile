@@ -11,13 +11,13 @@ pipeline {
         stage('Build') {
             steps {
                 // Ejecutar el build usando Maven
-                sh 'mvn clean install'
+                bat 'mvn clean install'
             }
         }
         stage('Test') {
             steps {
                 // Ejecutar pruebas con Maven
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
         stage('Deploy') {
