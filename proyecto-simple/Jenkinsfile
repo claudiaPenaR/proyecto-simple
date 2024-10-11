@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Obtener código fuente') {
             steps {
-                git 'https://github.com/TuNombreDeUsuario/proyecto-simple.git'
+                git 'https://github.com/claudiaPenaR/proyecto-simple.git'
             }
         }
         stage('Compilar con Maven') {
